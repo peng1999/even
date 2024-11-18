@@ -23,8 +23,10 @@
     {% if page %}
       {% if page.description %}
       <meta name="description" content="{{ page.description }}" />
-      {% elif config.description %}
-      <meta name="description" content="{{ config.description }}" />
+      {% elif page.summary %}
+      <meta name='description' content='{{ page.summary | safe | striptags }}'>
+      {% else %}
+      <meta name='description' content='{{ page.title }}'>
       {% endif %}
     {% elif config.description %}
       <meta name="description" content="{{ config.description }}" />
